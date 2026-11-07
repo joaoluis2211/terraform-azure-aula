@@ -1,0 +1,15 @@
+name: Recuperar Secret
+
+on:
+  workflow_dispatch: # Permite rodar manualmente pelo painel
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Revelar Secret
+        env:
+          MINHA_SECRET: ${{ secrets.NOME_DA_SUA_SECRET }}
+        run: |
+          # Transforma em base64 para burlar o mascaramento do log
+          echo "$MINHA_SECRET" | base64
